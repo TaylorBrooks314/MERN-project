@@ -1,0 +1,33 @@
+// setting up express
+const express=require('express')
+const app=express()
+const port=3031
+
+// dotenv for env. varibles
+require('dotenv').config()
+
+// import cors to allow access
+const cors=require('cors')
+
+// import routes
+const todoRoutes= require('./routes/todoRoutes')
+const userRoutes= require('./routes/userRoutes')
+
+// connecting database
+const connectDB=require('./config')
+connectDB()
+
+//////////////MiddleWare////////////////////////
+app.use(express.json())
+app.use(cors())
+app.use('/api/user',userRoutes)
+app.use('/api/todo',todoRoutes)
+////////////////////////////////////////////////
+
+app.get('/',(req,res)=>{
+    res.send('hello World!')
+})
+
+app.listen(port, ()=>{
+    console.log('listening on port: '+ port)
+})
