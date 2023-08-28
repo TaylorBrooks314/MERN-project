@@ -2,10 +2,13 @@
 import { Route,Routes } from "react-router-dom"
 import Login from "./pages/user/Login"
 import SignUp from "./pages/user/SignUp"
+import Profile from "./pages/user/Profile"
+
 import Year from "./pages/calendar/Year"
 import Month from "./pages/calendar/Month"
 import Week from "./pages/calendar/Week"
 import Day from "./pages/calendar/Day"
+
 import Navbar from "./components/Navbar"
 
 function App() {
@@ -16,6 +19,7 @@ function App() {
     <Routes>
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<SignUp/>}/>
+      <Route path="/profile" element={<Profile/>}/>
       <Route path="/year" element={<Year/>}/>
       <Route path="/month" element={<Month/>}/>
       <Route path="/week" element={<Week/>}/>
