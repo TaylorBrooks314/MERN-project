@@ -3,6 +3,6 @@ const router=express.Router()
 const userContoller= require('../controllers/userController')
 
 // INDUCES
-// I
+// Show-profile page
 router.get('/',userContoller.show)
 module.exports= router

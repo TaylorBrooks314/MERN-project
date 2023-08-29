@@ -12,6 +12,7 @@ const cors=require('cors')
 // import routes
 const todoRoutes= require('./routes/todoRoutes')
 const userRoutes= require('./routes/userRoutes')
+const authRoutes= require('./routes/authRoutes')
 
 // connecting database
 const connectDB=require('./config')
@@ -22,6 +23,7 @@ app.use(express.json())
 app.use(cors())
 app.use('/api/user',userRoutes)
 app.use('/api/todo',todoRoutes)
+app.use('/auth',authRoutes)
 ////////////////////////////////////////////////
 
 app.get('/',(req,res)=>{

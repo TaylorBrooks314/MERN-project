@@ -1,6 +1,11 @@
 
 export default function Navbar() {
   return (
-    <div>Navbar</div>
+    <div>
+      <a href="/login">Login</a>
+      <a href="/signup">Signup</a>
+      <a href="/profile">Profile</a>
+
+    </div>
   )
 }
