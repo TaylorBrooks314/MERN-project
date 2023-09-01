@@ -27,7 +27,7 @@ async function show(req,res){
 }
 async function update(req,res){
     try{
-        let updatedTodo= await Todos.findByIdAndUpdate({ _id: req.params.id},req.body)
+        let updatedTodo= await Todos.findOneAndUpdate({ _id: req.params.id},req.body)
         console.log(updatedTodo)
         res.status(200).json(updatedTodo)
     }catch(err){
@@ -37,6 +37,7 @@ async function update(req,res){
 async function destroy(req,res){
     try{
     await Todos.findByIdAndDelete({_id:req.params.id})
+    res.status(200).json({message: 'successfully deleted'})
     }catch(err){
         console.log('in the delete function in the todoController:', err.message)
     }

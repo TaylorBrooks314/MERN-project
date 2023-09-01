@@ -22,8 +22,10 @@ export default function ShowTodo() {
     }
   }
   async function handleDelete(){
+    console.log('here')
     try{
       await axios.delete(`/api/todo/${id}`)
+      console.log('here')
       navigate('/day')
     }catch(err){
       console.log(err.message)
@@ -46,6 +48,7 @@ export default function ShowTodo() {
       <a href={`/${id}/edit`}>
         <button>Edit</button>
       </a>
+      <br />
       <a href='/day'>
         <button>Go Back</button>
       </a>

@@ -12,8 +12,7 @@ router.post('/', todoController.create)
 router.put('/:id',todoController.update)
 
 // delete
-router.delete('/:id'.todoController.destroy)
-
+router.delete('/:id',todoController.destroy)
 //show
 router.get('/:id',todoController.show)
 

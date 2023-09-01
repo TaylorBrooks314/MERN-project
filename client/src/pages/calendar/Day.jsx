@@ -31,7 +31,9 @@ export default function Day() {
       <a href="/newTodo">
         <button>Add Event</button>
       </a>
-      <a href="/month">Go Back</a>
+      <a href="/month">
+        <button>Go Back</button> 
+      </a>
     </div>
   )
 }
