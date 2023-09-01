@@ -1,0 +1,7 @@
+.day-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.day-box div{
+    border: 1px solid black;
+}

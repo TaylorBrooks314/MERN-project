@@ -2,12 +2,17 @@ const express=require('express')
 const router=express.Router()
 const todoController=require('../controllers/todoController')
 
+// index
+router.get('/', todoController.index)
+
 // create
-// where to post since they will be sorted by the day
 router.post('/', todoController.create)
 
 // delete
 // router.delete('')
+
+//show
+router.get('/:id',todoController.show)
 
 
 

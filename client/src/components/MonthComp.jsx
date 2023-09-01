@@ -1,20 +1,47 @@
-import { useState } from "react"
-export default function MonthComp() {
-  const [month,setMonth]=useState('')
-  const [year, setYear]= useState('')
+/* eslint-disable react/prop-types */
+import '../app.css'
+import { useNavigate } from "react-router-dom"
+export default function MonthComp(props) {
+
+    const navigate=useNavigate()
+
+    let {months,month,year}=props
+    console.log(props)
+    console.log(months.indexOf(month))
+    month=months.indexOf(month)
+//   const [month,setMonth]=useState(months.indexOf(props.month))
+//   const [year, setYear]= useState(props.year)
   let arr=[]
-  const months=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
-   function handleMonthChange(e){
-    let index=months.indexOf(e.target.value)
-    setMonth(index)
-   }
-   function handleYearChange(e){
-    setYear(e.target.value)
-   }
+
+//    function handleMonthChange(e){
+//     let index=months.indexOf(e.target.value)
+//     console.log(index)
+//     setMonth(index)
+//     console.log(month)
+//    }
+//    function handleYearChange(e){
+//     setYear(e.target.value)
+//    }
    function daysInMonth(month, year){
+        if (month==0){
+            let d = new Date(year-1, month+1, 0)
+            return d.getDate();
+        }
         let d = new Date(year, month+1, 0);
         return d.getDate();
     }
+
+    // if(month&&year){
+    //     loadCalDays()
+    //    }
+    //    if(month==0){
+    //     loadCalDays()
+    //    }
+    loadCalDays()
+      
+
+
+
    function loadCalDays(){
     console.log(year,month)
     let tmpDate = new Date(year, month);
@@ -23,69 +50,33 @@ export default function MonthComp() {
     let dayOfWeek = tmpDate.getDay(); 
     
     for(let i =0; i<dayOfWeek;i++){
-        arr.push('E')
+        arr.push('')
     }
     for(let i=1; i<=numOfDays;i++){
         arr.push(i)
     }
     console.log(arr)
    }
-   if(month&&year){
-    loadCalDays()
+  
+   function handleNav(){
+    navigate('/month',{month:month, year:year, months:months})
    }
   
-  
-  
     return (
-    <div className="calendar">
-        <>
-          <label htmlFor="month">Month</label>
-          <select id="month" onChange={handleMonthChange} >
-          <option></option>
-          <option>JAN</option>
-          <option>FEB</option>
-          <option>MAR</option>
-          <option>APR</option>
-          <option>MAY</option>
-          <option>JUN</option>
-          <option>JUL</option>
-          <option>AUG</option>
-          <option>SEP</option>
-          <option>OCT</option>
-          <option>NOV</option>
-          <option>DEC</option>
-          </select>
-        </>
-        <br />
-        <>
-          <label htmlFor="year">Year</label>
-          <select id='year' onChange={handleYearChange}>
-          <option></option>
-          <option>2018</option>
-          <option>2019</option>
-          <option>2020</option>
-          <option>2021</option>
-          <option>2022</option>
-          <option>2023</option>
-          <option>2024</option>
-          <option>2025</option>
-          <option>2026</option>
-          <option>2027</option>
-          <option>2028</option>
+    <div className="calendar" onClick={handleNav}>
 
-          </select>
-        </>
+          <h3> {months[month]}, {year}</h3>
         <br></br>
-        <>
-          <>SUN </>
-          <>MON </>
-          <>TUE </>
-          <>WED </>
-          <>THUR </>
-          <>FRI </>
-          <>SAT </>
-        </>
-        <div>
+        <div className="day-box">
+          <div>SUN </div>
+          <div>MON </div>
+          <div>TUE </div>
+          <div>WED </div>
+          <div>THUR </div>
+          <div>FRI </div>
+          <div>SAT </div>
+        
+        
          {arr.map((day,i)=>{
             return(
                 <div key={i}>{day}</div>

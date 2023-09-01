@@ -8,11 +8,13 @@ require('dotenv').config()
 
 // import cors to allow access
 const cors=require('cors')
-
+// import authorize middleware
+const {authorize}= require('./middleWare/authMiddleWare')
 // import routes
 const todoRoutes= require('./routes/todoRoutes')
 const userRoutes= require('./routes/userRoutes')
 const authRoutes= require('./routes/authRoutes')
+
 
 // connecting database
 const connectDB=require('./config')
