@@ -8,8 +8,11 @@ router.get('/', todoController.index)
 // create
 router.post('/', todoController.create)
 
+// update
+router.put('/:id',todoController.update)
+
 // delete
-// router.delete('')
+router.delete('/:id'.todoController.destroy)
 
 //show
 router.get('/:id',todoController.show)
