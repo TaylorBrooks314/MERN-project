@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import axios from 'axios'
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
-export default function SignUp() {
+export default function SignUp({user, setUser}) {
     const navigate=useNavigate()
     const emptyForm={
         username:'',
@@ -23,7 +24,14 @@ export default function SignUp() {
                 return
             }
             localStorage.setItem("token",token)
-            // //////////Something missing here////////
+            const userResponse= await axios.get('api/user', {
+                headers:{
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            setUser(userResponse.data)
+            
+
             navigate('/month')
         }catch(err){
             console.log(err.message)

@@ -5,24 +5,48 @@ const Users=require('../models/userModel')
 // no new/create becuase user is created in authController
 
 // profile page-show loggedin users profile info
-function show(){
-
+async function show(req, res){
+    try{
+        console.log(req.id)
+        const foundUser= await Users.findById(req.id)
+        res.json({
+            username: foundUser.username,
+            email: foundUser.email
+        })
+    }catch(err){
+        console.log('in the show function in the userController:', err.message)
+    }
 }
 // delete loggedin user
 function destroy(){
 
 }
-// change password or username
-function edit(){
+
+// update password 
+async function updatePassword(req, res){
+    try{
+        console.log('in the update password ',req.body, req.id)
+        let updatedUser=await Users.findOneAndUpdate(req.id, req.body)
+        res.status(200).json(updatedUser)
+    }catch(err){
+        console.log('in the password function in the userController: ',err.message)
+    }
 
 }
-// update password of username
-function update(){
+// update username
+async function updateUsername(req, res){
+    try{
+        console.log('in the update username',req.body, req.id)
+        let updatedUser=await Users.findOneAndUpdate({id:req.id}, req.body)
+        res.status(200).json(updatedUser)
+    }catch(err){
+        console.log('in the updateUsername function in the userController: ',err.message)
+    }
 
 }
 module.exports={
     show,
     destroy,
-    edit,
-    update,
+    updatePassword,
+    updateUsername
 }

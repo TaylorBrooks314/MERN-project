@@ -23,7 +23,7 @@ connectDB()
 //////////////MiddleWare////////////////////////
 app.use(express.json())
 app.use(cors())
-app.use('/api/user',userRoutes)
+app.use('/api/user',authorize, userRoutes)
 app.use('/api/todo',todoRoutes)
 app.use('/auth',authRoutes)
 ////////////////////////////////////////////////

@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import axios from 'axios'
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
-export default function Login() {
+export default function Login({setUser}) {
 
     const navigate=useNavigate()
 
@@ -26,8 +27,16 @@ export default function Login() {
                 console.log("no token(maybe check backend)")
                 return
             }
+            console.log(token)
             localStorage.setItem("token",token)
-            // //////////Something missing here////////
+            const userResponse= await axios.get('api/user', {
+                headers:{
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            console.log(userResponse.data)
+            setUser(userResponse.data)
+
             navigate('/month')
         }catch(err){
             console.log(err.message)

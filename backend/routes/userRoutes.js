@@ -5,4 +5,10 @@ const userContoller= require('../controllers/userController')
 // INDUCES
 // Show-profile page
 router.get('/',userContoller.show)
+// Update-password
+router.put('/password', userContoller.updatePassword)
+// Update-username
+router.put('/username', userContoller.updateUsername)
+
+
 module.exports= router
