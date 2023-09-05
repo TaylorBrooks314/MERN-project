@@ -43,16 +43,16 @@ export default function Login({setUser}) {
         }
     }
   return (
-    <div>
-        <h1>Log in</h1>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username</label>
-            <input id="username" name="username" onChange={handleChange}/>
+    <div className='flex flex-col items-center '>
+        <h1 className=' text-decoration-line: underline'>Log in</h1>
+        <form onSubmit={handleSubmit} className='border border-black flex flex-col'>
+            <label htmlFor="username" className='text-center'>Username:</label>
+            <input id="username" name="username" onChange={handleChange} className='border border-black' />
             <br />
-            <label htmlFor="password">Password</label>
-            <input type='password' id="password" name="password" onChange={handleChange}/>
+            <label htmlFor="password" className='text-center'>Password:</label>
+            <input type='password' id="password" name="password" onChange={handleChange} className='border border-black'/>
             <br />
-            <button>Submit</button>
+            <button className='border border-black' >Submit</button>
         </form>
     </div>
   )

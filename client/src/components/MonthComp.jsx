@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import '../app.css'
+
 import { useNavigate } from "react-router-dom"
 export default function MonthComp(props) {
 
@@ -30,18 +30,9 @@ export default function MonthComp(props) {
         let d = new Date(year, month+1, 0);
         return d.getDate();
     }
-
-    // if(month&&year){
-    //     loadCalDays()
-    //    }
-    //    if(month==0){
-    //     loadCalDays()
-    //    }
+    
     loadCalDays()
-      
-
-
-
+    
    function loadCalDays(){
     console.log(year,month)
     let tmpDate = new Date(year, month);
@@ -65,21 +56,21 @@ export default function MonthComp(props) {
     return (
     <div className="calendar" onClick={handleNav}>
 
-          <h3> {months[month]}, {year}</h3>
+          <h3 className='text-xl text-decoration-line: underline'> {months[month]}, {year}</h3>
         <br></br>
-        <div className="day-box">
-          <div>SUN </div>
-          <div>MON </div>
-          <div>TUE </div>
-          <div>WED </div>
-          <div>THUR </div>
-          <div>FRI </div>
-          <div>SAT </div>
+        <div className="grid grid-cols-7">
+          <div className='border border-gray-200 text-center text-blue-600'>SUN </div>
+          <div className='border border-gray-200 text-center text-blue-600'>MON </div>
+          <div className='border border-gray-200 text-center text-blue-600'>TUE </div>
+          <div className='border border-gray-200 text-center text-blue-600'>WED </div>
+          <div className='border border-gray-200 text-center text-blue-600'>THUR </div>
+          <div className='border border-gray-200 text-center text-blue-600'>FRI </div>
+          <div className='border border-gray-200 text-center text-blue-600'>SAT </div>
         
         
          {arr.map((day,i)=>{
             return(
-                <div key={i}>{day}</div>
+                <div className='border border-gray-200' key={i}>{day}</div>
             )
          })}
         </div>

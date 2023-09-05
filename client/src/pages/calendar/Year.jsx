@@ -2,7 +2,7 @@
 import MonthComp from "../../components/MonthComp"
 export default function Year({currentYear,months}) {
   return (
-    <div>
+    <div className="flex flex-col">
       {months.map((month,i)=>{
         return(
     

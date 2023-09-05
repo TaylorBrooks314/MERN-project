@@ -16,23 +16,23 @@ export default function Day() {
   return (
 
     <div>
-      <h1>Events for today</h1>
+      <h1 className="text-xl text-decoration-line: underline">Events for today</h1>
       <br />
       {todos.map((todo, i)=>{
         return(
-          <div key={i}>
+          <div  className="border border-black flex"key={i}>
           <input type="checkbox"/>
           <a href={`/${todo._id}`}>
-          <p>Title: {todo.title}</p>
+          <p>Event: {todo.title}</p>
           </a>
           </div>
         )
       })}
       <a href="/newTodo">
-        <button>Add Event</button>
+        <button className="border border-black">Add Event</button>
       </a>
       <a href="/month">
-        <button>Go Back</button> 
+        <button className="border border-black">Go Back</button> 
       </a>
     </div>
   )

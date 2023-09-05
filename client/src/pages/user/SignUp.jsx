@@ -2,7 +2,7 @@
 import axios from 'axios'
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
-export default function SignUp({user, setUser}) {
+export default function SignUp({setUser}) {
     const navigate=useNavigate()
     const emptyForm={
         username:'',
@@ -38,17 +38,17 @@ export default function SignUp({user, setUser}) {
         }
     }
   return (
-    <div>
-        <h1>Sign up</h1>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username</label>
-            <input id="username" name="username" onChange={handleChange}/>
+    <div className='flex flex-col items-center '>
+        <h1 className=' text-decoration-line: underline'>Sign up</h1>
+        <form onSubmit={handleSubmit} className='border border-black flex flex-col bg-gray-200'>
+            <label htmlFor="username" className='text-center'>Username:</label>
+            <input id="username" name="username" onChange={handleChange} className='border border-black'/>
             <br />
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" onChange={handleChange}/>
+            <label htmlFor="email" className='text-center'>Email:</label>
+            <input type="email" id="email" name="email" onChange={handleChange} className='border border-black'/>
             <br />
-            <label htmlFor="password">Password</label>
-            <input type='password' id="password" name="password" onChange={handleChange}/>
+            <label htmlFor="password" className='text-center'>Password:</label>
+            <input type='password' id="password" name="password" onChange={handleChange} className='border border-black'/>
             <br />
             <button>Submit</button>
         </form>

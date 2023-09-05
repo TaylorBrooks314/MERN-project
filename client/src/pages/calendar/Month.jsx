@@ -85,24 +85,23 @@ export default function Month(props) {
           <option>2026</option>
           <option>2027</option>
           <option>2028</option>
-
           </select>
         </>
         <br />
         <br />
-        <div className="day-box">
-          <div>SUN </div>
-          <div>MON </div>
-          <div>TUE </div>
-          <div>WED </div>
-          <div>THUR </div>
-          <div>FRI </div>
-          <div>SAT </div>
+        <div className= "grid grid-cols-7">
+          <div className="border border-gray-200 text-center text-blue-600">SUN </div>
+          <div className="border border-gray-200 text-center text-blue-600">MON </div>
+          <div className="border border-gray-200 text-center text-blue-600">TUE </div>
+          <div className="border border-gray-200 text-center text-blue-600">WED </div>
+          <div className="border border-gray-200 text-center text-blue-600">THUR </div>
+          <div className="border border-gray-200 text-center text-blue-600">FRI </div>
+          <div className="border border-gray-200 text-center text-blue-600">SAT </div>
         
         
          {arr.map((day,i)=>{
             return(
-                <div key={i}>{day}</div>
+                <div className="border border-gray-200 " key={i}>{day}</div>
             )
          })}
         </div>
