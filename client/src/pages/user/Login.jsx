@@ -3,7 +3,7 @@ import axios from 'axios'
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import baseURL from '../../api'
-export default function Login({setUser}) {
+export default function Login({year, month ,setUser}) {
 
     const navigate=useNavigate()
 
@@ -38,7 +38,7 @@ export default function Login({setUser}) {
             console.log(userResponse.data)
             setUser(userResponse.data)
 
-            navigate('/month')
+            navigate(`/year/${year}/month/${month}`)
         }catch(err){
             console.log(err.message)
         }
