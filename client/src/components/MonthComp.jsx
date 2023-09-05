@@ -50,7 +50,7 @@ export default function MonthComp(props) {
    }
   
    function handleNav(){
-    navigate('/month',{month:month, year:year, months:months})
+    navigate(`/year/${year}/month/${month}`,{month:month, year:year, months:months})
    }
   
     return (

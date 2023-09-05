@@ -1,23 +1,31 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react"
+import {useNavigate, useParams} from "react-router-dom"
 export default function Month(props) {
-    const{months}=props
-    console.log(props)
-    console.log(months.indexOf(props.month))
+  const navigate=useNavigate()
+  // takes in month, year,months
+  const{months}=props
+  const params= useParams()
+  console.log(params)
 
-  const [month,setMonth]=useState(months.indexOf(props.month))
-  const [year, setYear]= useState(props.year)
+  // month is a number because date obj takes number for month
+  const [month,setMonth]=useState(params.month)
+  const [year, setYear]= useState(params.year)
+  // push days in to this arr and map to create calendarDays
   let arr=[]
 
-   function handleMonthChange(e){
+  // reloads calendar when month changes 
+  function handleMonthChange(e){
     let index=months.indexOf(e.target.value)
-    console.log(index)
     setMonth(index)
-    console.log(month)
-   }
-   function handleYearChange(e){
+  }
+
+  // reloads calendar when year changes
+  function handleYearChange(e){
     setYear(e.target.value)
-   }
+  }
+
+  //  calculates how many days are the month
    function daysInMonth(month, year){
         if (month==0){
             let d = new Date(year-1, month+1, 0)
@@ -26,6 +34,7 @@ export default function Month(props) {
         let d = new Date(year, month+1, 0);
         return d.getDate();
     }
+
    function loadCalDays(){
     console.log(year,month)
     let tmpDate = new Date(year, month);
@@ -41,19 +50,24 @@ export default function Month(props) {
     }
     console.log(arr)
    }
-   if(month&&year){
+
+   if(year){
+    if(month||month==0)
     loadCalDays()
    }
-   if(month==0){
-    loadCalDays()
-   }
+  //  if(month==0){
+  //   loadCalDays()
+  //  }
+  function handleNav(){
+    navigate('/day')
+  }
   
   
     return (
     <div className="calendar">
         <>
           <label htmlFor="month">Month</label>
-          <select id="month" onChange={handleMonthChange} defaultValue={props.month}>
+          <select id="month" onChange={handleMonthChange} defaultValue={months[params.month]}>
           <option></option>
           <option value='JAN'>JAN</option>
           <option value='FEB'>FEB</option>
@@ -72,7 +86,7 @@ export default function Month(props) {
 
         <>
           <label htmlFor="year">Year</label>
-          <select id='year' onChange={handleYearChange} defaultValue={props.year}>
+          <select id='year' onChange={handleYearChange} defaultValue={params.year}>
           <option></option>
           <option>2018</option>
           <option>2019</option>
@@ -101,7 +115,7 @@ export default function Month(props) {
         
          {arr.map((day,i)=>{
             return(
-                <div className="border border-gray-200 " key={i}>{day}</div>
+                <div className="border border-gray-200 " onClick={handleNav} key={i}>{day}</div>
             )
          })}
         </div>

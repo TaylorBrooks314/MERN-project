@@ -56,13 +56,13 @@ function App() {
 
   return (
     <>
-    <Navbar user={user} setUser={setUser}/>
+    <Navbar user={user} setUser={setUser} year={currentYear}/>
     <Routes>
       {user.username?
       <>
       <Route path="/profile" element={<Profile user={user}/>}/>
-      <Route path="/year" element={<Year currentYear={currentYear} months={months}/>}/>
-      <Route path="/month" element={<Month month={currentMonth} year={currentYear} months={months}/>}/>
+      <Route path="/year/:year" element={<Year currentYear={currentYear} months={months}/>}/>
+      <Route path="/year/:year/month/:month" element={<Month month={currentMonth} year={currentYear} months={months}/>}/>
       <Route path="/week" element={<Week/>}/>
       <Route path="/day" element={<Day/>}/>
       <Route path="/newTodo" element={<NewTodo/>}/>

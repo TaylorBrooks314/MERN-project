@@ -2,7 +2,7 @@
 import {useNavigate,Link} from 'react-router-dom'
 
 
-export default function Navbar({user,setUser}) {
+export default function Navbar({user,setUser,year}) {
   const navigate=useNavigate()
   function logout(){
     localStorage.removeItem('token')
@@ -23,7 +23,7 @@ export default function Navbar({user,setUser}) {
           </li>
         
           <li className='text-blue-600  font-bold hover:text-gray-500'>
-        <Link to="/year">Year </Link>
+        <Link to={`/year/${year}`}>Year </Link>
           </li>
           <li className='text-blue-600  font-bold hover:text-gray-500'>
         <Link to="/month">Month </Link>
