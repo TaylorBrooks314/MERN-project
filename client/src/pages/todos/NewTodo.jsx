@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import baseURL from '../../api'
 
 export default function AddToDo() {
   const navigate=useNavigate()
@@ -22,7 +23,7 @@ export default function AddToDo() {
   try {
       const newTodo = todo
       // add header when add in authorization
-      await axios.post(`/api/todo`, newTodo)
+      await axios.post(baseURL+`/api/todo`, newTodo)
       navigate(`/day`)
   } catch(err) {
       console.log(err.message)

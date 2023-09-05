@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
+import baseURL from '../../api'
 
 export default function ShowTodo() {
   const navigate= useNavigate()
@@ -15,7 +16,7 @@ export default function ShowTodo() {
   },[])
   async function getTodo(){
     try{
-      let response= await axios.get(`/api/todo/${id}`)
+      let response= await axios.get(baseURL+`/api/todo/${id}`)
       setTodo(response.data)
     }catch(err){
       console.log(err.message)
@@ -24,7 +25,7 @@ export default function ShowTodo() {
   async function handleDelete(){
     console.log('here')
     try{
-      await axios.delete(`/api/todo/${id}`)
+      await axios.delete(baseURL+`/api/todo/${id}`)
       console.log('here')
       navigate('/day')
     }catch(err){

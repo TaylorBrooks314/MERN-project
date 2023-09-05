@@ -1,6 +1,7 @@
 import {useState,useEffect, useRef} from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
+import baseURL from '../../api'
 export default function EditTodo() {
   const {id}= useParams()
   const navigate=useNavigate()
@@ -27,7 +28,7 @@ export default function EditTodo() {
 
  async function getTodo(){
   try{
-    let response= await axios.get(`/api/todo/${id}`)
+    let response= await axios.get(baseURL+`/api/todo/${id}`)
     setTodo(response.data)
   }catch(err){
     console.log(err.message)
@@ -50,7 +51,7 @@ async function handleSubmit(e) {
       }
       console.log(updatedTodo)
       // add header when add in authorization
-      await axios.put(`/api/todo/${id}`, updatedTodo)
+      await axios.put(baseURL+`/api/todo/${id}`, updatedTodo)
       navigate(`/${id}`)
   } catch(err) {
       console.log(err.message)

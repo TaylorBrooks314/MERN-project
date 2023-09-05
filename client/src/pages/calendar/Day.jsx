@@ -1,5 +1,6 @@
 import axios from "axios"
 import {useEffect,useState} from "react"
+import baseURL from "../../api"
 export default function Day() {
   const [todos,setTodos]=useState([])
   useEffect(()=>{
@@ -7,7 +8,7 @@ export default function Day() {
   })
   async function getTodos(){
     try{
-      let response= await axios.get('/api/todo')
+      let response= await axios.get(baseURL+'/api/todo')
       setTodos(response.data)
     }catch(err){
       console.log(err.message)
