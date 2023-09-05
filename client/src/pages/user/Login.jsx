@@ -30,7 +30,7 @@ export default function Login({year, month ,setUser}) {
             }
             console.log(token)
             localStorage.setItem("token",token)
-            const userResponse= await axios.get(baseURL+'api/user', {
+            const userResponse= await axios.get(baseURL+'/api/user', {
                 headers:{
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
