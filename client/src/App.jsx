@@ -19,8 +19,10 @@ import baseURL from './api'
 function App() {
   const D= new Date()
   const currentYear=D.getFullYear()
+  const currentDay=D.getDate()
+  console.log(currentDay)
   const months=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
-  const currentMonth=months[D.getMonth()]
+  // const currentMonth=months[D.getMonth()]
   const [user, setUser]=useState({})
   const [loading, setLoading]=useState(true)
   useEffect(()=>{
@@ -56,17 +58,17 @@ function App() {
 
   return (
     <>
-    <Navbar user={user} setUser={setUser} year={currentYear}/>
+    <Navbar user={user} setUser={setUser} year={currentYear} month={D.getMonth()} day={currentDay}/>
     <Routes>
       {user.username?
       <>
-      <Route path="/profile" element={<Profile user={user}/>}/>
+      <Route path="/profile" element={<Profile user={user} setUser={setUser}/>}/>
       <Route path="/year/:year" element={<Year currentYear={currentYear} months={months}/>}/>
-      <Route path="/year/:year/month/:month" element={<Month month={currentMonth} year={currentYear} months={months}/>}/>
+      <Route path="/year/:year/month/:month" element={<Month months={months}/>}/>
       <Route path="/week" element={<Week/>}/>
-      <Route path="/day" element={<Day/>}/>
-      <Route path="/newTodo" element={<NewTodo/>}/>
-      <Route path="/:id" element={<ShowTodo/>}/>
+      <Route path="/year/:year/month/:month/day/:day" element={<Day/>}/>
+      <Route path="/year/:year/month/:month/day/:day/newTodo" element={<NewTodo/>}/>
+      <Route path="/year/:year/month/:month/day/:day/:id" element={<ShowTodo/>}/>
       <Route path="/:id/edit" element={<EditTodo/>}/>
       {!loading && <Route path='*' element={<Navigate to='/login' />} />}
       </>

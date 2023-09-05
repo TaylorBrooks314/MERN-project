@@ -4,7 +4,7 @@ import { useRef } from "react"
 import { useNavigate } from 'react-router-dom'
 import baseURL from '../../api'
 
-export default function Profile({user}) {
+export default function Profile({user,setUser}) {
   const usernameRef=useRef()
   const passwordRef=useRef()
   const password2Ref=useRef()
@@ -42,12 +42,13 @@ export default function Profile({user}) {
         username:usernameRef.current.value
       }
       console.log(updatedUsername)
-      await axios.put(baseURL+'/api/user/username',updatedUsername.username,{
+      const updatedUser=await axios.put(baseURL+'/api/user/username',updatedUsername,{
         headers:{
           Authorization:`Bearer ${localStorage.getItem('token')}`
         }
       })
-      navigate('/profile')
+      console.log(updatedUser.data)
+      setUser(updatedUser.data)
     }catch(err){
       console.log(err.message)
     }

@@ -9,11 +9,14 @@ async function create(req,res){
     }
 }
 async function index(req,res){
+    console.log('index')
     try{
-        let list= await Todos.find()
+        console.log(req.query)
+        let list= await Todos.find(req.query)
         res.status(200).json(list)
     }catch(err){
         console.log('in the index function in the todoController:', err.message)
+        res.status(400).json('broken')
     }
 }
 async function show(req,res){

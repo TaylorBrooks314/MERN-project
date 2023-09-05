@@ -1,12 +1,12 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import baseURL from '../../api'
 
 export default function ShowTodo() {
   const navigate= useNavigate()
 
-  const {id}=useParams()
+  const {year,month,day,id}=useParams()
   console.log(id)
 
   const [todo, setTodo]=useState({})
@@ -27,7 +27,7 @@ export default function ShowTodo() {
     try{
       await axios.delete(baseURL+`/api/todo/${id}`)
       console.log('here')
-      navigate('/day')
+      navigate(`/year/${year}/month/${month}/day/${day}`)
     }catch(err){
       console.log(err.message)
     }
@@ -36,6 +36,8 @@ export default function ShowTodo() {
 
   return (
     <div>
+      Date: {todo.date}
+      <br />
       Event: {todo.title}
       <br />
       Location: {todo.location}
@@ -46,13 +48,13 @@ export default function ShowTodo() {
       <br />
       End Time: {todo.endTime}
       <br />
-      <a href={`/${id}/edit`}>
+      <Link to={`/${id}/edit`}>
         <button>Edit</button>
-      </a>
+      </Link>
       <br />
-      <a href='/day'>
+      <Link to={`/year/${year}/month/${month}/day/${day}`}>
         <button>Go Back</button>
-      </a>
+      </Link>
       <button onClick={handleDelete}>Delete</button>
     </div>
   )

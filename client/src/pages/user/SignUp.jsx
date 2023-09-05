@@ -3,7 +3,7 @@ import axios from 'axios'
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import baseURL from '../../api'
-export default function SignUp({setUser}) {
+export default function SignUp({year, month, setUser}) {
     const navigate=useNavigate()
     const emptyForm={
         username:'',
@@ -33,7 +33,7 @@ export default function SignUp({setUser}) {
             setUser(userResponse.data)
             
 
-            navigate('/month')
+            navigate(`/year/${year}/month${month}`)
         }catch(err){
             console.log(err.message)
         }

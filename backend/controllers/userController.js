@@ -37,7 +37,8 @@ async function updatePassword(req, res){
 async function updateUsername(req, res){
     try{
         console.log('in the update username',req.body, req.id)
-        let updatedUser=await Users.findOneAndUpdate({id:req.id}, req.body)
+        let updatedUser=await Users.findOneAndUpdate({_id:req.id}, req.body)
+        console.log(updatedUser)
         res.status(200).json(updatedUser)
     }catch(err){
         console.log('in the updateUsername function in the userController: ',err.message)

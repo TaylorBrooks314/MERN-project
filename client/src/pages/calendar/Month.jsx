@@ -58,8 +58,9 @@ export default function Month(props) {
   //  if(month==0){
   //   loadCalDays()
   //  }
-  function handleNav(){
-    navigate('/day')
+  function handleNav(e){
+    
+    navigate(`/year/${year}/month/${month}/day/${e}`)
   }
   
   
@@ -115,7 +116,7 @@ export default function Month(props) {
         
          {arr.map((day,i)=>{
             return(
-                <div className="border border-gray-200 " onClick={handleNav} key={i}>{day}</div>
+                <div className="border border-gray-200 " onClick={()=>handleNav(day)} key={i} value={day}>{day}</div>
             )
          })}
         </div>

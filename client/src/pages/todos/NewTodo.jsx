@@ -1,11 +1,14 @@
 import {useState} from 'react'
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import baseURL from '../../api'
 
 export default function AddToDo() {
+  const{year,month,day}=useParams()
   const navigate=useNavigate()
+  const date=`${year}${month}${day}`
  const emptyform={
+  date:date,
   title:'',
   details:'',
   location:'',
@@ -13,7 +16,7 @@ export default function AddToDo() {
   endTime:'',
  }
  const [todo,setTodo]=useState(emptyform)
-
+ console.log(emptyform.date)
  function handleChange(e){
   setTodo({...todo, [e.target.name]:e.target.value})
   console.log(todo)
@@ -24,7 +27,7 @@ export default function AddToDo() {
       const newTodo = todo
       // add header when add in authorization
       await axios.post(baseURL+`/api/todo`, newTodo)
-      navigate(`/day`)
+      navigate(`/year/${year}/month/${month}/day/${day}/`)
   } catch(err) {
       console.log(err.message)
   }
@@ -40,10 +43,10 @@ export default function AddToDo() {
         <input id="location" name="location" onChange={handleChange}/>
         <br />
         <label htmlFor="startTime">Start Time</label>
-        <input id="startTime" name="startTime" onChange={handleChange}/>
+        <input id="startTime" name="startTime" type='time' onChange={handleChange}/>
         <br />
         <label htmlFor="endTime">End Time</label>
-        <input id="endTime" name="endTime" onChange={handleChange}/>
+        <input id="endTime" name="endTime" type='time' onChange={handleChange}/>
         <br />
         <label htmlFor="details">Details</label>
         <br />
