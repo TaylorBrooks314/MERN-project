@@ -2,6 +2,7 @@
 import axios from 'axios'
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
+import baseURL from '../../api'
 export default function Login({setUser}) {
 
     const navigate=useNavigate()
@@ -20,7 +21,7 @@ export default function Login({setUser}) {
     async function handleSubmit(e){
         e.preventDefault()
         try{
-            let response= await axios.post('/auth/login',form)
+            let response= await axios.post(baseURL+'/auth/login',form)
             const token=response.data.token
             if(!token){
                 setForm(emptyForm)
@@ -29,7 +30,7 @@ export default function Login({setUser}) {
             }
             console.log(token)
             localStorage.setItem("token",token)
-            const userResponse= await axios.get('api/user', {
+            const userResponse= await axios.get(baseURL+'api/user', {
                 headers:{
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }

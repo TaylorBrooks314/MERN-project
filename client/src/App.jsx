@@ -14,6 +14,8 @@ import Navbar from "./components/Navbar"
 import EditTodo from "./pages/todos/EditTodo"
 import ShowTodo from "./pages/todos/ShowTodo"
 import NewTodo from "./pages/todos/NewTodo"
+
+import baseURL from './api'
 function App() {
   const D= new Date()
   const currentYear=D.getFullYear()
@@ -36,7 +38,7 @@ function App() {
   },[user])
   async function getUser(){
     try{
-      let response= await axios.get('/api/user',{
+      let response= await axios.get( baseURL +'/api/user',{
         headers:{
           Authorization:`Bearer ${localStorage.getItem('token')}`
         }
