@@ -66,7 +66,7 @@ function App() {
       <Route path="/year/:year" element={<Year currentYear={currentYear} months={months}/>}/>
       <Route path="/year/:year/month/:month" element={<Month months={months}/>}/>
       <Route path="/week" element={<Week/>}/>
-      <Route path="/year/:year/month/:month/day/:day" element={<Day/>}/>
+      <Route path="/year/:year/month/:month/day/:day" element={<Day months={months}/>}/>
       <Route path="/year/:year/month/:month/day/:day/newTodo" element={<NewTodo/>}/>
       <Route path="/year/:year/month/:month/day/:day/:id" element={<ShowTodo/>}/>
       <Route path="/:id/edit" element={<EditTodo/>}/>

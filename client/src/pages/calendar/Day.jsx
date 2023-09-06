@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import axios from "axios"
 import {useEffect,useState} from "react"
 import baseURL from "../../api"
 import { Link, useParams } from "react-router-dom"
-export default function Day() {
+export default function Day({months}) {
   const [todos,setTodos]=useState([])
   const{year,month,day,}=useParams()
   useEffect(()=>{
@@ -21,7 +22,7 @@ export default function Day() {
   return (
 
     <div>
-      <h1 className="text-xl text-decoration-line: underline">Events for today</h1>
+      <h1 className="text-xl text-decoration-line: underline">Events for today: {day} {months[month]},{year}</h1>
       <br />
       {todos.map((todo, i)=>{
         return(
