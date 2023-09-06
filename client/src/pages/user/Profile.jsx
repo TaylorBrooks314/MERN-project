@@ -67,38 +67,39 @@ export default function Profile({user,setUser}) {
     }
   }
   return (
-    <div>
-      <h3>Username: {user.username}</h3>
+    <div className='text-center'>
+      <h3 className='text-decoration-line: underline text-lg'>Profile</h3>
+        Username: {user.username}
       <p>Email: {hiddenEmail}</p>
-      <br />
 
-      <p>Change Username:</p>
-      <form onSubmit={handleUsernameChange}>
+      <div className='border border-black m-5'>
+      <p className='text-decoration-line: underline'>Change Username:</p>
+      <form onSubmit={handleUsernameChange} className='space-x-5'>
         <label htmlFor="username">New Username</label>
-        <br/>
-        <input id='username' name='username' ref={usernameRef}/>
-
-        <button>Change Username</button>
+        <input id='username' name='username' ref={usernameRef} className='border border-black rounded-lg'/>
+        <button className='border border-black m-3 bg-blue-600 rounded p-1 hover:bg-gray-500'>Change Username</button>
       </form>
+      </div>
 
-      <br />
-
-      <p>Change Password:</p>
-      <form onSubmit={handlePasswordChange}>
+      <div className='border border-black m-5'>
+      <p className='text-decoration-line: underline'>Change Password:</p>
+      <form onSubmit={handlePasswordChange} className='space-x-5'>
         <label htmlFor="password">New Password</label>
-        <br />
-        <input id="password" name="password" ref={passwordRef} />
-      <button>Change Password</button>
+        <input id="password" name="password" ref={passwordRef} className='border border-black rounded-lg'/>
+      <button className='border border-black m-3 bg-blue-600 rounded p-1 hover:bg-gray-500'>Change Password</button>
       </form>
+      </div>
+      
+      <div className='border border-black m-5'>
+      <p className='text-decoration-line: underline'>Delete Account:</p>
+      <form onSubmit={handleDelete} className='space-x-5'>
+      <label htmlFor="password"> Password</label>
+      <input id='password' name='password' ref={password2Ref} className='border border-black rounded-lg'/>
+      <button className='border border-black m-3 bg-red-600 rounded p-1 hover:bg-gray-500'>Delete account</button>
+      </form>
+      </div>
 
-      <br />
-
-      <p>Delete Account:</p>
-      <form onSubmit={handleDelete}></form>
-      <label htmlFor="password">Enter your password</label>
-      <input id='password' name='password' ref={password2Ref}></input>
-      <button>Submit</button>
-      <form></form>
+      
       </div>
   )
 }

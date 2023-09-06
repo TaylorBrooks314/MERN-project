@@ -40,7 +40,7 @@ export default function SignUp({year, month, setUser}) {
     }
   return (
     <div className='flex flex-col items-center '>
-        <h1 className=' text-decoration-line: underline'>Sign up</h1>
+        <h1 className=' text-decoration-line: underline mt-12'>Sign up</h1>
         <form onSubmit={handleSubmit} className='border border-black flex flex-col bg-gray-200'>
             <label htmlFor="username" className='text-center'>Username:</label>
             <input id="username" name="username" onChange={handleChange} className='border border-black'/>

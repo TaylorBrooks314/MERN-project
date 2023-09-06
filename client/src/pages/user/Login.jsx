@@ -45,7 +45,7 @@ export default function Login({year, month ,setUser}) {
     }
   return (
     <div className='flex flex-col items-center '>
-        <h1 className=' text-decoration-line: underline'>Log in</h1>
+        <h1 className=' text-decoration-line: underline mt-12'>Log in</h1>
         <form onSubmit={handleSubmit} className='border border-black flex flex-col'>
             <label htmlFor="username" className='text-center'>Username:</label>
             <input id="username" name="username" onChange={handleChange} className='border border-black' />
