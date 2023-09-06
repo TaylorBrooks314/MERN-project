@@ -49,7 +49,7 @@ export default function ShowTodo({months}) {
       <br />
       <p>End Time: {todo.endTime}</p>
       <br />
-      <p>times are in 24-hr format</p>
+      <p className='text-sm text-gray-500'>*times are in 24-hr format</p>
 
       <div className='border border-black m-10'>
       <Link to={`/${id}/edit`} className='border border-black m-5 p-3 bg-blue-600'>
@@ -57,7 +57,7 @@ export default function ShowTodo({months}) {
       </Link>
       
       <Link to={`/year/${year}/month/${month}/day/${day}`} className='border border-black m-5 p-3 bg-blue-600'>
-        <button>Back</button>
+        <button> Go Back</button>
       </Link>
       
       <button onClick={handleDelete} className='border border-black m-5 p-3 bg-blue-600'>Delete</button>
