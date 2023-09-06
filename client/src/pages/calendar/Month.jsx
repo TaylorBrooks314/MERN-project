@@ -63,7 +63,9 @@ export default function Month(props) {
     loadCalDays()
    }
   function handleNav(e){
-    
+    if(e[3]){
+    e=e.slice(0,e.indexOf("-"))
+    }
     navigate(`/year/${year}/month/${month}/day/${e}`)
   }
   async function getTodos(){
@@ -78,7 +80,7 @@ export default function Month(props) {
     for(let j=0; j<todos.length;j++){
       console.log(todos[j].date) 
       if(todos[j].date==`${year}${month}${arr[i]}`){
-        arr[i]=arr[i]+todos[j].title
+        arr[i]+="-"+todos[j].title
       }
     }
   }
@@ -140,6 +142,7 @@ export default function Month(props) {
                 <div className="border border-gray-200 " onClick={()=>handleNav(day)} key={i} value={day}>{day}</div>
             )
          })}
+         
         </div>
     </div>
   )
