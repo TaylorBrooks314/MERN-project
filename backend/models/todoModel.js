@@ -17,14 +17,14 @@ const todoSchema=new Schema({
   location:{
     type:String
   },
-  // startTime:{
-
-  // },
-  // endTime:{
-
-  // },
+  startTime:{
+    type:String
+  },
+  endTime:{
+    type:String
+  },
   details:{
-
+    type:String
   }
 
 })
