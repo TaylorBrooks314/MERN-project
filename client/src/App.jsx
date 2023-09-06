@@ -69,7 +69,7 @@ function App() {
       <Route path="/year/:year/month/:month/day/:day" element={<Day months={months}/>}/>
       <Route path="/year/:year/month/:month/day/:day/newTodo" element={<NewTodo/>}/>
       <Route path="/year/:year/month/:month/day/:day/:id" element={<ShowTodo months={months}/>}/>
-      <Route path="/:id/edit" element={<EditTodo/>}/>
+      <Route path="/year/:year/month/:month/day/:day/:id/edit" element={<EditTodo/>}/>
       {!loading && <Route path='*' element={<Navigate to='/login' />} />}
       </>
       :

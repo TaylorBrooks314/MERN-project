@@ -13,7 +13,7 @@ export default function Navbar({user,setUser,year,month,day}) {
     <div className=" pt-2 bg-gray-200">
       {user.username?
       <ul className='flex justify-around'>
-        <p>Welcome {user.username}!!</p>
+        <p className='font-bold'>Welcome {user.username}!!</p>
         
           <li className='text-blue-600  font-bold hover:text-gray-500'>
         <Link to="/profile">Profile</Link>

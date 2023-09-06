@@ -52,7 +52,7 @@ export default function ShowTodo({months}) {
       <p className='text-sm text-gray-500'>*times are in 24-hr format</p>
 
       <div className='border border-black m-10'>
-      <Link to={`/${id}/edit`} className='border border-black m-5 p-3 bg-blue-600'>
+      <Link to={`/year/${year}/month/${month}/day/${day}/${id}/edit`} className='border border-black m-5 p-3 bg-blue-600'>
         <button>Edit</button>
       </Link>
       
