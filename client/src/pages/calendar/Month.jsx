@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {useNavigate, useParams} from "react-router-dom"
+import axios from 'axios'
+import baseURL from "../../api"
 export default function Month(props) {
   const navigate=useNavigate()
   // takes in month, year,months
@@ -11,8 +13,13 @@ export default function Month(props) {
   // month is a number because date obj takes number for month
   const [month,setMonth]=useState(params.month)
   const [year, setYear]= useState(params.year)
+  const [todos, setTodos]=useState([])
   // push days in to this arr and map to create calendarDays
   let arr=[]
+
+  useEffect(()=>{
+    getTodos()
+  },[])
 
   // reloads calendar when month changes 
   function handleMonthChange(e){
@@ -55,14 +62,27 @@ export default function Month(props) {
     if(month||month==0)
     loadCalDays()
    }
-  //  if(month==0){
-  //   loadCalDays()
-  //  }
   function handleNav(e){
     
     navigate(`/year/${year}/month/${month}/day/${e}`)
   }
-  
+  async function getTodos(){
+    try{
+      let response= await axios.get(baseURL+'/api/todo/month')
+      setTodos(response.data)
+    }catch(err){
+      console.log(err.message)
+    }
+  }
+  for(let i =0; i<arr.length;i++){
+    for(let j=0; j<todos.length;j++){
+      console.log(todos[j].date) 
+      if(todos[j].date==`${year}${month}${arr[i]}`){
+        arr[i]=arr[i]+todos[j].title
+      }
+    }
+  }
+  console.log(arr)
   
     return (
     <div className="calendar">
@@ -103,6 +123,7 @@ export default function Month(props) {
           </select>
         </>
         <br />
+        
         <br />
         <div className= "grid grid-cols-7">
           <div className="border border-gray-200 text-center text-blue-600">SUN </div>

@@ -5,6 +5,9 @@ const todoController=require('../controllers/todoController')
 // index
 router.get('/', todoController.index)
 
+// index for month and year
+router.get('/month', todoController.month)
+
 // create
 router.post('/', todoController.create)
 

@@ -20,6 +20,7 @@ const authRoutes= require('./routes/authRoutes')
 const connectDB=require('./config')
 connectDB()
 
+
 //////////////MiddleWare////////////////////////
 app.use(express.json())
 app.use(cors())

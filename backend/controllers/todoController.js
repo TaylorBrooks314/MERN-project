@@ -45,11 +45,20 @@ async function destroy(req,res){
         console.log('in the delete function in the todoController:', err.message)
     }
 }
+async function month(req,res){
+    try{
+        const todos= await Todos.find()
+        res.status(200).json(todos)
+    }catch(err){
+        console.log('in the month function in the todoController:', err.message)
+    }
+}
 // induces
 module.exports={
     index,
     destroy,
     update,
     create,
-    show
+    show,
+    month
 }
