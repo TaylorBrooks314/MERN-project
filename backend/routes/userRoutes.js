@@ -9,6 +9,7 @@ router.get('/',userContoller.show)
 router.put('/password', userContoller.updatePassword)
 // Update-username
 router.put('/username', userContoller.updateUsername)
-
+// delete 
+router.delete('/delete',userContoller.destroy)
 
 module.exports= router

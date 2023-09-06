@@ -56,7 +56,7 @@ export default function Profile({user,setUser}) {
   async function handleDelete(e){
     e.preventDefault()
     try{
-      await axios.delete(`/api/user/delete`,{
+      await axios.delete('/api/user/delete',{
         headers:{
           Authorization:`Bearer ${localStorage.getItem('token')}`
         }
