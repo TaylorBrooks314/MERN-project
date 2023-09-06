@@ -92,18 +92,18 @@ export default function Month(props) {
           <label htmlFor="month">Month</label>
           <select id="month" onChange={handleMonthChange} defaultValue={months[params.month]}>
           <option></option>
-          <option value='JAN'>JAN</option>
-          <option value='FEB'>FEB</option>
-          <option value='MAR'>MAR</option>
-          <option value='APR'>APR</option>
+          <option value='JANUARY'>JANUARY</option>
+          <option value='FEBRUARY'>FEBRUARY</option>
+          <option value='MARCH'>MARCH</option>
+          <option value='APRIL'>APRIL</option>
           <option value='MAY'>MAY</option>
-          <option value='JUN'>JUN</option>
-          <option value='JUL'>JUL</option>
-          <option value='AUG'>AUG</option>
-          <option value='SEP'>SEP</option>
-          <option value='OCT'>OCT</option>
-          <option value='NOV'>NOV</option>
-          <option value='DEC'>DEC</option>
+          <option value='JUNE'>JUNE</option>
+          <option value='JULY'>JULY</option>
+          <option value='AUGUST'>AUGUST</option>
+          <option value='SEPTEMBER'>SEPTEMBER</option>
+          <option value='OCTOBER'>OCTOBER</option>
+          <option value='NOVEMBER'>NOVEMBER</option>
+          <option value='DECEMBER'>DECEMBER</option>
           </select>
         </>
 

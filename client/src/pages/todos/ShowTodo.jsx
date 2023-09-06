@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import baseURL from '../../api'
 
-export default function ShowTodo() {
+export default function ShowTodo({months}) {
   const navigate= useNavigate()
 
   const {year,month,day,id}=useParams()
@@ -35,27 +36,32 @@ export default function ShowTodo() {
 
 
   return (
-    <div>
-      Date: {todo.date}
+    <div className='border border-black text-center'>
+      <p className='text-lg text-decoration-line: underline'>{day} {months[month]}, {year}</p>
       <br />
-      Event: {todo.title}
+      <p className='text-xl font-bold'> {todo.title}</p>
       <br />
-      Location: {todo.location}
+      <p>Location: {todo.location}</p>
       <br />
-      Details: {todo.details}
+      <p>Details: {todo.details}</p>
       <br />
-      Start Time: {todo.startTime}
+      <p>Start Time: {todo.startTime}</p>
       <br />
-      End Time: {todo.endTime}
+      <p>End Time: {todo.endTime}</p>
       <br />
-      <Link to={`/${id}/edit`}>
+      <p>times are in 24-hr format</p>
+
+      <div className='border border-black m-10'>
+      <Link to={`/${id}/edit`} className='border border-black m-5 p-3 bg-blue-600'>
         <button>Edit</button>
       </Link>
-      <br />
-      <Link to={`/year/${year}/month/${month}/day/${day}`}>
-        <button>Go Back</button>
+      
+      <Link to={`/year/${year}/month/${month}/day/${day}`} className='border border-black m-5 p-3 bg-blue-600'>
+        <button>Back</button>
       </Link>
-      <button onClick={handleDelete}>Delete</button>
+      
+      <button onClick={handleDelete} className='border border-black m-5 p-3 bg-blue-600'>Delete</button>
+      </div>
     </div>
   )
 }

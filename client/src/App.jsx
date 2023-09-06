@@ -21,7 +21,7 @@ function App() {
   const currentYear=D.getFullYear()
   const currentDay=D.getDate()
   console.log(currentDay)
-  const months=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
+  const months=['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER']
   // const currentMonth=months[D.getMonth()]
   const [user, setUser]=useState({})
   const [loading, setLoading]=useState(true)
@@ -68,7 +68,7 @@ function App() {
       <Route path="/week" element={<Week/>}/>
       <Route path="/year/:year/month/:month/day/:day" element={<Day months={months}/>}/>
       <Route path="/year/:year/month/:month/day/:day/newTodo" element={<NewTodo/>}/>
-      <Route path="/year/:year/month/:month/day/:day/:id" element={<ShowTodo/>}/>
+      <Route path="/year/:year/month/:month/day/:day/:id" element={<ShowTodo months={months}/>}/>
       <Route path="/:id/edit" element={<EditTodo/>}/>
       {!loading && <Route path='*' element={<Navigate to='/login' />} />}
       </>
