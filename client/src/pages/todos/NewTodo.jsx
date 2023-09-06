@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import axios from 'axios'
-import {useNavigate, useParams} from 'react-router-dom'
+import {Link, useNavigate, useParams} from 'react-router-dom'
 import baseURL from '../../api'
 
 export default function AddToDo() {
@@ -33,30 +33,43 @@ export default function AddToDo() {
   }
 }
   return (
-    <div>
-      <h3>Add an Event</h3>
+    <div className='relative text-center'>
+      <h3 className='text-xl text-decoration-line: underline'>Add an Event</h3>
       <form onSubmit={handleSubmit}>
+        <div className='space-x-10 mt-3 m-2'>
         <label htmlFor="title">Title*</label>
-        <input id="title" name="title" onChange={handleChange}/>
-        <br />
+        <input id="title" name="title" onChange={handleChange} className='border border-black rounded-lg'/>
+        </div>
+
+        <div className=' space-x-5 m-2'>
         <label htmlFor="location">Location</label>
-        <input id="location" name="location" onChange={handleChange}/>
-        <br />
+        <input id="location" name="location" onChange={handleChange} className='border border-black rounded-lg'/>
+        </div>
+
+        <div className=' space-x-3 m-2'>
         <label htmlFor="startTime">Start Time</label>
-        <input id="startTime" name="startTime" type='time' onChange={handleChange}/>
-        <br />
+        <input id="startTime" name="startTime" type='time' onChange={handleChange} className='border border-black rounded-lg'/>
+        </div>
+        
+        <div className=' space-x-4 m-2'>
         <label htmlFor="endTime">End Time</label>
-        <input id="endTime" name="endTime" type='time' onChange={handleChange}/>
-        <br />
+        <input id="endTime" name="endTime" type='time' onChange={handleChange} className='border border-black rounded-lg'/>
+        </div>
+        
+        <div className='text-center'>
+          <div className='flex justify-center space-x-5'>
         <label htmlFor="details">Details</label>
-        <br />
-        <textarea id="details" name="details" rows={'5'} cols={'30'} onChange={handleChange}/>
-        <button>Submit</button>
+        <textarea id="details" name="details" rows={'5'} cols={'30'} onChange={handleChange} className='border border-black rounded-lg'/>
+        </div>
+        <button className='border border-black m-3 bg-blue-600 rounded'>Submit</button>
+        </div>
       </form>
       <p>* = this field is required</p>
-      <a href="/day">
-      <button>Go Back</button>
-      </a>
+      <div className='border border-black'>
+      <Link to={`/year/${year}/month/${month}/day/${day}`}>
+        <button className='border border-black m-5 p-3 bg-blue-600'>Go Back</button>
+      </Link>
+      </div>
     </div>
   )
 }

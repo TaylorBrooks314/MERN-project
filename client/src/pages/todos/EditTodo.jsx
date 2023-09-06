@@ -52,7 +52,7 @@ async function handleSubmit(e) {
       console.log(updatedTodo)
       // add header when add in authorization
       await axios.put(baseURL+`/api/todo/${id}`, updatedTodo)
-      navigate(`/${id}`)
+      navigate(`/year/:${year}/month/${month}/day/${day}/${id}`)
   } catch(err) {
       console.log(err.message)
   }
@@ -72,14 +72,14 @@ async function handleSubmit(e) {
         <input id="location" name="location" onChange={handleChange} defaultValue={todo.location} ref={locationRef} className='border border-black rounded-lg'/>
         </div>
        
-        <div className=' space-x-3 m-2'>
+        <div className=' space-x-4 m-2'>
         <label htmlFor="startTime">Start Time:</label>
-        <input id="startTime" name="startTime" onChange={handleChange} defaultValue={todo.startTime} ref={startTimeRef} className='border border-black rounded-lg'/>
+        <input id="startTime" name="startTime" onChange={handleChange} type='time' defaultValue={todo.startTime} ref={startTimeRef} className='border border-black rounded-lg'/>
         </div>
 
         <div className=' space-x-4 m-2'>
         <label htmlFor="endTime">End Time:</label>
-        <input id="endTime" name="endTime" onChange={handleChange} defaultValue={todo.endTime} ref={endTimeRef} className='border border-black rounded-lg'/>
+        <input id="endTime" name="endTime" onChange={handleChange} type='time' defaultValue={todo.endTime} ref={endTimeRef} className='border border-black rounded-lg'/>
         </div>
         
       
