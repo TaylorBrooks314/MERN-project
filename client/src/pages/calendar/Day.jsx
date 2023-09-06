@@ -32,15 +32,16 @@ export default function Day({months}) {
           <p className="font-bold">{todo.title}</p>
           <p>Start Time:{todo.startTime}</p>
           <p>End Time:{todo.endTime}</p>
+          <p className="text-decoration-line: underline">more...</p>
           </Link>
           </div>
         )
       })}
-      <div className='border border-black m-10 flex justify-center'>
-      <Link to={`/year/${year}/month/${month}/day/${day}/newTodo`} className='border border-black m-5 p-3 bg-blue-600'>
+      <div className='border border-black m-10 flex justify-center '>
+      <Link to={`/year/${year}/month/${month}/day/${day}/newTodo`} className='border border-black m-5 p-3 bg-blue-600 hover:bg-gray-500'>
         <button>Add Event</button>
       </Link>
-      <Link to={`/year/${year}/month/${month}`} className='border border-black m-5 p-3 bg-blue-600'>
+      <Link to={`/year/${year}/month/${month}`} className='border border-black m-5 p-3 bg-blue-600 hover:bg-gray-500'>
         <button className="">Go Back</button> 
       </Link>
       </div>

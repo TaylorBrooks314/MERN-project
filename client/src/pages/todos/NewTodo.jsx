@@ -61,13 +61,13 @@ export default function AddToDo() {
         <label htmlFor="details">Details</label>
         <textarea id="details" name="details" rows={'5'} cols={'30'} onChange={handleChange} className='border border-black rounded-lg'/>
         </div>
-        <button className='border border-black m-3 bg-blue-600 rounded'>Submit</button>
+        <button className='border border-black m-3 bg-blue-600 rounded p-1 hover:bg-gray-500'>Submit</button>
         </div>
       </form>
       <p>* = this field is required</p>
       <div className='border border-black'>
       <Link to={`/year/${year}/month/${month}/day/${day}`}>
-        <button className='border border-black m-5 p-3 bg-blue-600'>Go Back</button>
+        <button className='border border-black m-5 p-3 bg-blue-600 hover:bg-gray-500'>Go Back</button>
       </Link>
       </div>
     </div>

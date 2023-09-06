@@ -52,15 +52,15 @@ export default function ShowTodo({months}) {
       <p className='text-sm text-gray-500'>*times are in 24-hr format</p>
 
       <div className='border border-black m-10'>
-      <Link to={`/year/${year}/month/${month}/day/${day}/${id}/edit`} className='border border-black m-5 p-3 bg-blue-600'>
+      <Link to={`/year/${year}/month/${month}/day/${day}/${id}/edit`} className='border border-black m-5 p-3 bg-blue-600 hover:bg-gray-500'>
         <button>Edit</button>
       </Link>
       
-      <Link to={`/year/${year}/month/${month}/day/${day}`} className='border border-black m-5 p-3 bg-blue-600'>
+      <Link to={`/year/${year}/month/${month}/day/${day}`} className='border border-black m-5 p-3 bg-blue-600 hover:bg-gray-500'>
         <button> Go Back</button>
       </Link>
       
-      <button onClick={handleDelete} className='border border-black m-5 p-3 bg-blue-600'>Delete</button>
+      <button onClick={handleDelete} className='border border-black m-5 p-3 bg-blue-600 hover:bg-gray-500'>Delete</button>
       </div>
     </div>
   )

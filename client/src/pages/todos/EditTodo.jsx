@@ -60,7 +60,7 @@ async function handleSubmit(e) {
 
   return (
     <div className='relative text-center'>
-      <h3 className='text-xl text-decoration-line: underline'>Add a Event</h3>
+      <h3 className='text-xl text-decoration-line: underline'>Edit your Event</h3>
       <form onSubmit={handleSubmit}>
         <div className=' space-x-10 mt-3 m-2'>
         <label htmlFor="title">*Title:</label>
@@ -88,7 +88,7 @@ async function handleSubmit(e) {
         <label htmlFor="details">Details:</label>
         <textarea id="details" name="details" rows={'5'} cols={'30'} onChange={handleChange} defaultValue={todo.details} ref={detailsRef} className=' border border-black rounded-lg'/>
         </div>
-        <button className='border border-black m-3 bg-blue-600 rounded'>Submit</button>
+        <button className='border border-black m-3 bg-blue-600 p-1 rounded hover:bg-gray-500'>Submit</button>
         </div>
         
         <p className='text-gray-600'>* = this field is required</p>
@@ -96,7 +96,7 @@ async function handleSubmit(e) {
       </form>
       <div className='border border-black'>
       <Link to={`/year/${year}/month/${month}/day/${day}/${id}`}>
-        <button className='border border-black m-5 p-3 bg-blue-600'>Go Back</button>
+        <button className='border border-black m-5 p-3 bg-blue-600 hover:bg-gray-500'>Go Back</button>
       </Link>
       </div>
     </div>
