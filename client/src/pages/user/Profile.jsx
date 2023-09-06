@@ -53,8 +53,18 @@ export default function Profile({user,setUser}) {
       console.log(err.message)
     }
   }
-  async function handleDelete(){
-   
+  async function handleDelete(e){
+    e.preventDefault()
+    try{
+      await axios.delete(`/api/user/delete`,{
+        headers:{
+          Authorization:`Bearer ${localStorage.getItem('token')}`
+        }
+      })
+    navigate('/signup')
+    }catch(err){
+      console.log(err.message)
+    }
   }
   return (
     <div>
