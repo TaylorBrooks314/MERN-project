@@ -15,7 +15,8 @@ Check out the Project [here](https://planner-frontend-4888.onrender.com).
 ## Unsolved Problems
 1. User can sign up without entering a password 
 2. User can not delete their account
-3. User can see other users events
+3. Update takes two tries to work
+4. User can see other users events
 ## Future Enhancements
 - Utilizing weather API to show weather
 - Including a checkbox for each event so user can mark completed events
