@@ -8,7 +8,8 @@ For this project I used:
 3. Axios
 4. Bcrypt
 5. Express
-6. Mongoose
+6. MongoDB
+7. Mongoose
 ## Getting Started
 Check out my Trello Board [here](https://trello.com/invite/b/FeCzFAJ3/ATTIb89c57de03db99baeb4b3678be26088dE2F16D0F/mern-project).
 Check out the Project [here](https://planner-frontend-4888.onrender.com).
