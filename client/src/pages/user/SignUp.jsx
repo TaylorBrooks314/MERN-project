@@ -33,7 +33,7 @@ export default function SignUp({year, month, setUser}) {
             setUser(userResponse.data)
             
 
-            navigate(`/year/${year}/month${month}`)
+            navigate(`/year/${year}/month/${month}`)
         }catch(err){
             console.log(err.message)
         }

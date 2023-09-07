@@ -74,6 +74,7 @@ function App() {
       </>
       :
       <>
+      <Route path='/' element={<Navigate to='/signup' />} />
       <Route path="/login" element={<Login month={D.getMonth()} year={currentYear} setUser={setUser} setLoading={setLoading}/>}/>
       <Route path="/signup" element={<SignUp month={D.getMonth()} year={currentYear} setUser={setUser} setLoading={setLoading}/>}/>
         {/* {!loading && <Route path='*' element={<Navigate to='/login' />} />} */}

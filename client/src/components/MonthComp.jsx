@@ -68,11 +68,6 @@ export default function MonthComp(props) {
   
     return (
     <div className="bg-gradient-to-r from-purple-500 to-pink-500" onClick={handleNav}>
-        {/* {todos.map((todo,i)=>{
-          return(
-          <p key={i}>{todo.title}</p>
-          )
-        })} */}
           <h3 className='text-xl text-decoration-line: underline'> {months[month]}, {year}</h3>
         <br></br>
         <div className="grid grid-cols-7">
