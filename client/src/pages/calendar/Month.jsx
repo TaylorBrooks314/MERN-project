@@ -34,7 +34,9 @@ export default function Month(props) {
 
   //  calculates how many days are the month
    function daysInMonth(month, year){
+        // for jan
         if (month==0){
+          // goes off month before 
             let d = new Date(year-1, month+1, 0)
             return d.getDate();
         }
@@ -47,9 +49,9 @@ export default function Month(props) {
     let tmpDate = new Date(year, month);
     console.log(tmpDate)
     let numOfDays = daysInMonth(month, year);
-    let dayOfWeek = tmpDate.getDay(); 
-    
-    for(let i =0; i<dayOfWeek;i++){
+    let startDay = tmpDate.getDay(); 
+    // use arr to map and create days in cal
+    for(let i =0; i<startDay;i++){
         arr.push('')
     }
     for(let i=1; i<=numOfDays;i++){

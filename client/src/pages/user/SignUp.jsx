@@ -3,7 +3,7 @@ import axios from 'axios'
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import baseURL from '../../api'
-export default function SignUp({year, month, setUser}) {
+export default function SignUp({year, month, setUser, loading, setLoading}) {
     const navigate=useNavigate()
     const emptyForm={
         username:'',
@@ -11,11 +11,13 @@ export default function SignUp({year, month, setUser}) {
         password:''
     }
     const [form, setForm]=useState(emptyForm)
+
     function handleChange(e){
         setForm({...form, [e.target.name]:e.target.value})
     }
     async function handleSubmit(e){
         e.preventDefault()
+        setLoading(true)
         try{
             let response= await axios.post(baseURL+'/auth/signup',form)
             const token=response.data.token
@@ -31,7 +33,7 @@ export default function SignUp({year, month, setUser}) {
                 }
             })
             setUser(userResponse.data)
-            
+            setLoading(false)
 
             navigate(`/year/${year}/month/${month}`)
         }catch(err){
@@ -40,7 +42,11 @@ export default function SignUp({year, month, setUser}) {
     }
   return (
     <div className='flex flex-col items-center '>
-        <h1 className=' text-decoration-line: underline mt-12'>Sign up</h1>
+       {loading?
+        <div>Loading</div>
+        :
+        <>
+         <h1 className=' text-decoration-line: underline mt-12'>Sign up</h1>
         <form onSubmit={handleSubmit} className='border border-black flex flex-col bg-gray-200'>
             <label htmlFor="username" className='text-center'>Username:</label>
             <input id="username" name="username" onChange={handleChange} className='border border-black'/>
@@ -51,8 +57,10 @@ export default function SignUp({year, month, setUser}) {
             <label htmlFor="password" className='text-center'>Password:</label>
             <input type='password' id="password" name="password" onChange={handleChange} className='border border-black'/>
             <br />
-            <button>Submit</button>
+            <button className='border border-black'>Submit</button>
         </form>
+        </>
+       }
     </div>
   )
 }

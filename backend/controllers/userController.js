@@ -36,7 +36,6 @@ async function destroy(req,res){
         } 
         const user= await Users.findByIdAndDelete(req.id)
         await Todos.deleteMany({ _id: {
-            // matches any comment ids in the given array
             $in: user.comments   
         }})
         console.log('delete sucessful')
@@ -50,7 +49,8 @@ async function destroy(req,res){
 async function updatePassword(req, res){
     try{
         console.log('in the update password ',req.body, req.id)
-        let updatedUser=await Users.findOneAndUpdate(req.id, req.body)
+        let updatedUser=await Users.findOneAndUpdate({_id:req.id}, req.body)
+        console.log(updatedUser)
         res.status(200).json(updatedUser)
     }catch(err){
         console.log('in the password function in the userController: ',err.message)

@@ -62,7 +62,7 @@ function App() {
     <Routes>
       {user.username?
       <>
-      <Route path="/profile" element={<Profile user={user} setUser={setUser}/>}/>
+      <Route path="/profile" element={<Profile user={user} setUser={setUser} loading={loading} setLoading={setLoading}/>}/>
       <Route path="/year/:year" element={<Year currentYear={currentYear} months={months}/>}/>
       <Route path="/year/:year/month/:month" element={<Month months={months}/>}/>
       <Route path="/week" element={<Week/>}/>
@@ -75,8 +75,8 @@ function App() {
       :
       <>
       <Route path='/' element={<Navigate to='/signup' />} />
-      <Route path="/login" element={<Login month={D.getMonth()} year={currentYear} setUser={setUser} setLoading={setLoading}/>}/>
-      <Route path="/signup" element={<SignUp month={D.getMonth()} year={currentYear} setUser={setUser} setLoading={setLoading}/>}/>
+      <Route path="/login" element={<Login month={D.getMonth()} year={currentYear} setUser={setUser} setLoading={setLoading} loading={loading}/>}/>
+      <Route path="/signup" element={<SignUp month={D.getMonth()} year={currentYear} setUser={setUser} setLoading={setLoading} loading={loading}/>}/>
         {/* {!loading && <Route path='*' element={<Navigate to='/login' />} />} */}
       </>}
     </Routes>

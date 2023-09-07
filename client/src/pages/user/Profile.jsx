@@ -4,7 +4,7 @@ import { useRef } from "react"
 import { useNavigate } from 'react-router-dom'
 import baseURL from '../../api'
 
-export default function Profile({user,setUser}) {
+export default function Profile({user,setUser,loading,setLoading}) {
   const usernameRef=useRef()
   const passwordRef=useRef()
   const password2Ref=useRef()
@@ -21,22 +21,26 @@ export default function Profile({user,setUser}) {
   
   async function handlePasswordChange(e){
     e.preventDefault()
+    setLoading(true)
     try{
       const updatedPassword={
         password:passwordRef.current.value
       }
-      await axios.put(baseURL+'/api/user/password',updatedPassword.password,{
+      const updatedUser= await axios.put(baseURL+'/api/user/password',updatedPassword,{
         headers:{
           Authorization:`Bearer ${localStorage.getItem('token')}`
         }
       }) 
-      navigate('/profile')
+      console.log(updatedUser.data)
+      setUser(updatedUser.data)
+      setLoading(false)
     }catch(err){
       console.log(err.message)
     }
   }
   async function handleUsernameChange(e){
     e.preventDefault()
+    setLoading(true)
     try{
       const updatedUsername={
         username:usernameRef.current.value
@@ -49,6 +53,7 @@ export default function Profile({user,setUser}) {
       })
       console.log(updatedUser.data)
       setUser(updatedUser.data)
+      setLoading(false)
     }catch(err){
       console.log(err.message)
     }
@@ -68,7 +73,11 @@ export default function Profile({user,setUser}) {
   }
   return (
     <div className='text-center'>
-      <h3 className='text-decoration-line: underline text-lg'>Profile</h3>
+      {loading?
+        <div>Loading...</div>
+        :
+        <>
+        <h3 className='text-decoration-line: underline text-lg'>Profile</h3>
         Username: {user.username}
       <p>Email: {hiddenEmail}</p>
 
@@ -98,6 +107,9 @@ export default function Profile({user,setUser}) {
       <button className='border border-black m-3 bg-red-600 rounded p-1 hover:bg-gray-500'>Delete account</button>
       </form>
       </div>
+        </>
+
+      }
 
       
       </div>
