@@ -1,27 +1,22 @@
 /* eslint-disable react/prop-types */
-
+import axios from 'axios'
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import baseURL from '../api'
 export default function MonthComp(props) {
-
+  const [todos,setTodos]=useState([])
     const navigate=useNavigate()
 
     let {months,month,year}=props
     console.log(props)
     console.log(months.indexOf(month))
     month=months.indexOf(month)
-//   const [month,setMonth]=useState(months.indexOf(props.month))
-//   const [year, setYear]= useState(props.year)
   let arr=[]
+  useEffect(()=>{
+    getTodos()
+  },[])
 
-//    function handleMonthChange(e){
-//     let index=months.indexOf(e.target.value)
-//     console.log(index)
-//     setMonth(index)
-//     console.log(month)
-//    }
-//    function handleYearChange(e){
-//     setYear(e.target.value)
-//    }
+
    function daysInMonth(month, year){
         if (month==0){
             let d = new Date(year-1, month+1, 0)
@@ -52,20 +47,42 @@ export default function MonthComp(props) {
    function handleNav(){
     navigate(`/year/${year}/month/${month}`,{month:month, year:year, months:months})
    }
+   async function getTodos(){
+    try{
+      
+      let response= await axios.get(baseURL+'/api/todo/month')
+      console.log(response)
+      setTodos(response.data)
+    }catch(err){
+      console.log(err.message)
+    }
+  }
+  console.log(todos)
+  for(let i =0; i<arr.length;i++){
+    for(let j=0; j<todos.length;j++){
+      if(todos[j].date==`${year}${month}${arr[i]}`){
+        arr[i]+="-"+todos[j].title
+      }
+    }
+  }
   
     return (
-    <div className="calendar" onClick={handleNav}>
-
+    <div className="bg-gradient-to-r from-purple-500 to-pink-500" onClick={handleNav}>
+        {/* {todos.map((todo,i)=>{
+          return(
+          <p key={i}>{todo.title}</p>
+          )
+        })} */}
           <h3 className='text-xl text-decoration-line: underline'> {months[month]}, {year}</h3>
         <br></br>
         <div className="grid grid-cols-7">
-          <div className='border border-gray-200 text-center text-blue-600'>SUN </div>
-          <div className='border border-gray-200 text-center text-blue-600'>MON </div>
-          <div className='border border-gray-200 text-center text-blue-600'>TUE </div>
-          <div className='border border-gray-200 text-center text-blue-600'>WED </div>
-          <div className='border border-gray-200 text-center text-blue-600'>THUR </div>
-          <div className='border border-gray-200 text-center text-blue-600'>FRI </div>
-          <div className='border border-gray-200 text-center text-blue-600'>SAT </div>
+          <div className='border border-gray-200 text-center '>SUN </div>
+          <div className='border border-gray-200 text-center '>MON </div>
+          <div className='border border-gray-200 text-center '>TUE </div>
+          <div className='border border-gray-200 text-center '>WED </div>
+          <div className='border border-gray-200 text-center '>THUR </div>
+          <div className='border border-gray-200 text-center '>FRI </div>
+          <div className='border border-gray-200 text-center '>SAT </div>
         
         
          {arr.map((day,i)=>{

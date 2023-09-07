@@ -87,10 +87,10 @@ export default function Month(props) {
   console.log(arr)
   
     return (
-    <div className="calendar">
+    <div className="calendar bg-gradient-to-r from-purple-500 to-pink-500">
         <>
           <label htmlFor="month">Month</label>
-          <select id="month" onChange={handleMonthChange} defaultValue={months[params.month]}>
+          <select id="month" onChange={handleMonthChange} defaultValue={months[params.month]} className="border border-black rounded bg-gradient-to-r from-purple-500 to-pink-500">
           <option></option>
           <option value='JANUARY'>JANUARY</option>
           <option value='FEBRUARY'>FEBRUARY</option>
@@ -109,7 +109,7 @@ export default function Month(props) {
 
         <>
           <label htmlFor="year">Year</label>
-          <select id='year' onChange={handleYearChange} defaultValue={params.year}>
+          <select id='year' onChange={handleYearChange} defaultValue={params.year} className="border border-black rounded bg-gradient-to-r from-purple-500 to-pink-500">
           <option></option>
           <option>2018</option>
           <option>2019</option>
@@ -127,14 +127,14 @@ export default function Month(props) {
         <br />
         
         <br />
-        <div className= "grid grid-cols-7">
-          <div className="border border-gray-200 text-center text-blue-600">SUN </div>
-          <div className="border border-gray-200 text-center text-blue-600">MON </div>
-          <div className="border border-gray-200 text-center text-blue-600">TUE </div>
-          <div className="border border-gray-200 text-center text-blue-600">WED </div>
-          <div className="border border-gray-200 text-center text-blue-600">THUR </div>
-          <div className="border border-gray-200 text-center text-blue-600">FRI </div>
-          <div className="border border-gray-200 text-center text-blue-600">SAT </div>
+        <div className= "grid grid-cols-7 ">
+          <div className="border border-gray-200 text-center ">SUN </div>
+          <div className="border border-gray-200 text-center ">MON </div>
+          <div className="border border-gray-200 text-center ">TUE </div>
+          <div className="border border-gray-200 text-center ">WED </div>
+          <div className="border border-gray-200 text-center ">THUR </div>
+          <div className="border border-gray-200 text-center ">FRI </div>
+          <div className="border border-gray-200 text-center ">SAT </div>
         
         
          {arr.map((day,i)=>{
